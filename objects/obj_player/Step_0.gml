@@ -5,16 +5,16 @@
 // movimento do betinha e colisão com o obj_wall (eu sei, esse sistema de movimentação e colisão tá uma merda, mas dps eu arrumo)
 
 if (keyboard_check(ord("W")) && !place_meeting(x, y - 2.5, obj_wall)) {
-    y -= 2.5;
+    y -= spd_player;
 }
 if (keyboard_check(ord("S")) && !place_meeting(x, y + 2.5, obj_wall)) {
-    y += 2.5;
+    y += spd_player;
 }
 if (keyboard_check(ord("A")) && !place_meeting(x - 2.5, y, obj_wall)) {
-    x -= 2.5;
+    x -= spd_player;
 }
 if (keyboard_check(ord("D")) && !place_meeting(x + 2.5, y, obj_wall)) {
-    x += 2.5;
+    x += spd_player;
 }
 
 // tiro do betinha
@@ -60,4 +60,34 @@ if !can_shoot {
 
 if !mouse_check_button(mb_left) {
 	sprite_index = spr_player_idle;
+}
+
+if (keyboard_check(vk_shift)) && is_dashing == false && dash_cooldown <= 0 {
+    dir_dash = point_direction(x, y, mouse_x, mouse_y)
+	spd_player = spd_dash;
+	is_dashing = true;
+	dash_timer = 10;
+
+}
+
+			if (is_dashing) {
+    var dx = lengthdir_x(spd_player, dir_dash);
+    var dy = lengthdir_y(spd_player, dir_dash);
+
+    if (!place_meeting(x + dx, y + dy, obj_wall)) {
+        x += dx;
+        y += dy;
+    }
+
+    dash_timer -= 1;
+
+    if (dash_timer <= 0) {
+        is_dashing = false;
+        spd_player = 2.5;
+        dash_cooldown = 30; 
+    }
+			}
+			
+			if (dash_cooldown > 0) {
+    dash_cooldown -= 1;
 }

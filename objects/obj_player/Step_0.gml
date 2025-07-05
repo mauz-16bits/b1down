@@ -2,7 +2,7 @@
 
 	obj_player.image_angle = point_direction(x, y, mouse_x, mouse_y);
 
-// movimento do betinha e colisão com o obj_wall
+// movimento do betinha e colisão com o obj_wall (eu sei, esse sistema de movimentação e colisão tá uma merda, mas dps eu arrumo)
 
 if (keyboard_check(ord("W")) && !place_meeting(x, y - 2.5, obj_wall)) {
     y -= 2.5;

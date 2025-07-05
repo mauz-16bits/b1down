@@ -1,7 +1,12 @@
 /// @description Seguir o betinha do player
 
-var enemy_speed = 2;
-
 if instance_exists(obj_player) {
-	move_towards_point(obj_player.x, obj_player.y, enemy_speed)
+	var dir = point_direction(x, y, obj_player.x, obj_player.y);
+	var dx = lengthdir_x(enemy_speed, dir);
+	var dy = lengthdir_y(enemy_speed, dir);
+	
+	if (!place_meeting(x + dx, y + dy, obj_wall)) {
+		x += dx;
+		y += dy;
+	}
 }

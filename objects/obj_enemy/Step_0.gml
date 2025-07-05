@@ -9,4 +9,11 @@ if instance_exists(obj_player) {
 		x += dx;
 		y += dy;
 	}
+	
+	path_end()
+	
+    if (mp_grid_path(grid, caminho, x, y, obj_player.x, obj_player.y, true)) {
+        path_start(caminho, enemy_speed, path_action_stop, false);
+    }
 }
+

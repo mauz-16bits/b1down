@@ -1,5 +1,6 @@
 /// @description Seguir o betinha do player
-
+	obj_enemy.image_angle = point_direction(x, y, obj_player.x, obj_player.y);
+	
 if instance_exists(obj_player) {
 	var dir = point_direction(x, y, obj_player.x, obj_player.y);
 	var dx = lengthdir_x(enemy_speed, dir);

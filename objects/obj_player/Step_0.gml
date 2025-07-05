@@ -12,7 +12,7 @@ x -= 2.5;
 x += 2.5;
 }
 
-// tiro
+// tiro do betinha
 
 if mouse_check_button_pressed(mb_left) {
 	var dir_atk_player = point_direction(x, y, mouse_x, mouse_y);
@@ -21,5 +21,6 @@ if mouse_check_button_pressed(mb_left) {
 	
 	atk.direction = dir_atk_player;
 	
-	atk.image_angle = dir_atk_player;
+	obj_player.image_angle = dir_atk_player;
+	
 }
